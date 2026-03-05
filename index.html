@@ -3,163 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A comprehensive guide to forecasting methods and techniques">
     <title>Forecasting Guide</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        nav {
+            background: #333;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        #content {
+            min-height: 300px;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #999;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="container">
-                <h1>📊 Forecasting</h1>
-                <ul class="nav-links">
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#methods">Methods</a></li>
-                    <li><a href="#applications">Applications</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <h1>📊 Forecasting Guide</h1>
+    <nav>
+        <a onclick="loadPage('introduction')">Introduction</a>
+        <a onclick="loadPage('methods')">Methods</a>
+    </nav>
+    <div id="content">Select a page above to get started.</div>
+    <footer>&copy; 2026 Forecasting Guide</footer>
 
-    <main>
-        <section id="hero">
-            <div class="container">
-                <h2>Understanding Forecasting</h2>
-                <p class="subtitle">Predicting the future through data-driven insights</p>
-            </div>
-        </section>
+    <script>
+        function loadPage(name) {
+            var contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '<p>Loading...</p>';
 
-        <section id="overview" class="section">
-            <div class="container">
-                <h2>What is Forecasting?</h2>
-                <p>Forecasting is the process of making predictions about the future based on past and present data. It's a critical tool in business, economics, finance, and many other fields where understanding future trends can drive better decision-making.</p>
-                
-                <div class="key-points">
-                    <div class="point-card">
-                        <h3>📈 Trend Analysis</h3>
-                        <p>Identify patterns and trends in historical data to project future behavior</p>
-                    </div>
-                    <div class="point-card">
-                        <h3>🎯 Decision Support</h3>
-                        <p>Make informed decisions based on quantitative predictions</p>
-                    </div>
-                    <div class="point-card">
-                        <h3>⚡ Risk Management</h3>
-                        <p>Anticipate challenges and opportunities to mitigate risks</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            fetch('pages/' + name + '.md')
+                .then(function(response) {
+                    if (!response.ok) throw new Error('Page not found');
+                    return response.text();
+                })
+                .then(function(text) {
+                    contentDiv.innerHTML = marked.parse(text);
+                    document.querySelectorAll('nav a').forEach(function(a) {
+                        a.classList.toggle('active', a.textContent.toLowerCase() === name);
+                    });
+                })
+                .catch(function(err) {
+                    contentDiv.innerHTML = '<p>Error loading page: ' + err.message + '</p>';
+                });
+        }
 
-        <section id="methods" class="section bg-light">
-            <div class="container">
-                <h2>Forecasting Methods</h2>
-                
-                <div class="method-category">
-                    <h3>Time Series Methods</h3>
-                    <ul>
-                        <li><strong>Moving Averages:</strong> Simple and weighted moving averages for smoothing data</li>
-                        <li><strong>Exponential Smoothing:</strong> Single, double, and triple exponential smoothing (Holt-Winters)</li>
-                        <li><strong>ARIMA:</strong> Autoregressive Integrated Moving Average models</li>
-                        <li><strong>Seasonal Decomposition:</strong> Breaking down time series into trend, seasonal, and residual components</li>
-                    </ul>
-                </div>
-
-                <div class="method-category">
-                    <h3>Machine Learning Methods</h3>
-                    <ul>
-                        <li><strong>Random Forest:</strong> Ensemble learning for regression and classification</li>
-                        <li><strong>Neural Networks:</strong> Deep learning models like LSTM and GRU for sequential data</li>
-                        <li><strong>Gradient Boosting:</strong> XGBoost, LightGBM for powerful predictions</li>
-                        <li><strong>Prophet:</strong> Facebook's automated forecasting tool</li>
-                    </ul>
-                </div>
-
-                <div class="method-category">
-                    <h3>Qualitative Methods</h3>
-                    <ul>
-                        <li><strong>Delphi Method:</strong> Expert consensus through structured communication</li>
-                        <li><strong>Market Research:</strong> Surveys and focus groups</li>
-                        <li><strong>Scenario Planning:</strong> Developing multiple plausible future scenarios</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="applications" class="section">
-            <div class="container">
-                <h2>Real-World Applications</h2>
-                
-                <div class="applications-grid">
-                    <div class="app-card">
-                        <h3>📊 Business & Finance</h3>
-                        <p>Sales forecasting, demand planning, financial projections, stock market predictions</p>
-                    </div>
-                    <div class="app-card">
-                        <h3>🌤️ Weather & Climate</h3>
-                        <p>Weather predictions, climate modeling, natural disaster preparedness</p>
-                    </div>
-                    <div class="app-card">
-                        <h3>🏭 Supply Chain</h3>
-                        <p>Inventory management, production planning, logistics optimization</p>
-                    </div>
-                    <div class="app-card">
-                        <h3>⚡ Energy</h3>
-                        <p>Power demand forecasting, renewable energy production, grid management</p>
-                    </div>
-                    <div class="app-card">
-                        <h3>🏥 Healthcare</h3>
-                        <p>Disease outbreak prediction, patient admission rates, resource allocation</p>
-                    </div>
-                    <div class="app-card">
-                        <h3>📱 Technology</h3>
-                        <p>User growth, system capacity planning, trend prediction</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="resources" class="section bg-light">
-            <div class="container">
-                <h2>Learning Resources</h2>
-                
-                <div class="resources">
-                    <div class="resource-category">
-                        <h3>📚 Books</h3>
-                        <ul>
-                            <li>"Forecasting: Principles and Practice" by Rob J Hyndman and George Athanasopoulos</li>
-                            <li>"Time Series Analysis and Its Applications" by Robert H. Shumway and David S. Stoffer</li>
-                            <li>"The Signal and the Noise" by Nate Silver</li>
-                        </ul>
-                    </div>
-
-                    <div class="resource-category">
-                        <h3>🔧 Tools & Libraries</h3>
-                        <ul>
-                            <li><strong>Python:</strong> pandas, statsmodels, scikit-learn, Prophet, TensorFlow</li>
-                            <li><strong>R:</strong> forecast, prophet, tsibble, fable</li>
-                            <li><strong>Commercial:</strong> SAS, SPSS, Tableau</li>
-                        </ul>
-                    </div>
-
-                    <div class="resource-category">
-                        <h3>🌐 Online Courses</h3>
-                        <ul>
-                            <li>Coursera: Time Series Forecasting</li>
-                            <li>edX: Data Science for Business Analytics</li>
-                            <li>DataCamp: Forecasting in Python/R</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Forecasting Guide. Built with ❤️ for data enthusiasts.</p>
-        </div>
-    </footer>
+        loadPage('introduction');
+    </script>
 </body>
 </html>
