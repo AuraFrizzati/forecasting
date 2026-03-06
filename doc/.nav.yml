@@ -2,28 +2,7 @@ append_unmatched: false
 flatten_single_child_sections: false
 nav:
   - Home: index.md
-  - Datasets & Analytics:
-      - Clinical Datasets: datasets.md
-      - Analytics & Forecasting: analytics.md
-      - Data Quality: data-quality.md
-  - Platform & Infrastructure:
-      - Infrastructure & Platform: infrastructure.md
-      - Environments: environments.md
-      - Data Pipeline Tools: pipelines.md
-  - Processes & Workflows:
-      - Development Process: development-process.md
-      - Change Management: change-management.md
-      - Agile Process: agile-process.md
-      - Data Recovery: data-recovery.md
-  - Access & Collaboration:
-      - Access & Authentication: access.md
-      - Sharing Views: sharing-views.md
-      - Issue Logging: issue-logging.md
-  - Reference:
-      - Templates & Documentation: templates.md
-      - Ways of Working: ways-of-working.md
-      - Known Issues & Troubleshooting: known-issues.md
-  - BigQuery on GCP:
-      - What is BigQuery: what-is-bq.md
-      - SQL in BQ: sql-bq.md
-      - BQ SQL Optimisation: bq-sql-optimisation.md
+  - Introduction:
+      - subsection 1: introduction.md
+  - Smoothing Methods:
+      - subsection 1: smoothing-methods.md
