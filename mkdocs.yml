@@ -3,8 +3,6 @@ site_url: https://aurafrizzati.github.io/forecasting/
 repo_url: https://github.com/AuraFrizzati/forecasting
 docs_dir: doc
 edit_uri: edit/main/doc/
-extra_css:
-  - stylesheets/extra.css
 theme:
   name: material
   palette:
