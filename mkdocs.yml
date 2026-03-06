@@ -7,9 +7,6 @@ extra_css:
   - stylesheets/extra.css
 theme:
   name: material
-  custom_dir: doc/overrides
-  logo: assets/logo.png
-  favicon: assets/favicon.ico
   palette:
     scheme: custom
   features:
@@ -42,25 +39,7 @@ plugins:
 
 nav:
   - Home: index.md
-  - Section 1:
-      - subsection 1: datasets.md
-      - Analytics & Forecasting: analytics.md
-      - Data Quality: data-quality.md
-  - Platform & Infrastructure:
-      - Infrastructure & Platform: infrastructure.md
-      - Environments: environments.md
-      - Data Pipeline Tools: pipelines.md
-      - Operations & Observability: operations.md
-  - Processes & Workflows:
-      - Development Process: development-process.md
-      - Change Management: change-management.md
-      - Agile Process: agile-process.md
-      - Data Recovery: data-recovery.md
-  - Access & Collaboration:
-      - Access & Authentication: access.md
-      - Sharing Views: sharing-views.md
-      - Issue Logging: issue-logging.md
-  - Reference:
-      - Templates & Documentation: templates.md
-      - Ways of Working: ways-of-working.md
-      - Known Issues & Troubleshooting: known-issues.md
+  - Introduction:
+      - subsection 1: introduction.md
+  - Smoothing Methods:
+      - subsection 1: smoothing-methods.md
